@@ -15,11 +15,8 @@ const config= {
   };
   export const createUserProfileDocument = async(userAuth , additionalData) => {
     if(!userAuth) return ;
-    
     const userRef=firestore.doc(`users/${userAuth.uid}`);//we will get back user reference at that location
-    
     const snapShot =await userRef.get();// get snapshot of firestore
-   
     if(!snapShot.exists)//if snapshop does not exists then we need to create it.
     {
       const{displayName , email} = userAuth;
